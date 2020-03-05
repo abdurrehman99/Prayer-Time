@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400&display=swap');
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+.background
+{
+    background : linear-gradient(90.80079989371438deg, rgb(7, 153, 163) 5.7267741123718885%,rgb(13, 115, 122) 79.05103289714494%);
+    height: 100vh;
+    width: 100%;
+}
+.spinner{
+    padding-top: 18rem;
+}
+
+@media only screen and (max-width: 574px) {
+    .background{
+        height: 60rem;
+    }
+}
