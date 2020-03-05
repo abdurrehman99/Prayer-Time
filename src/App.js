@@ -9,38 +9,39 @@ function App() {
     time : '',
     date : '',
     meta : '',
-    currentDate : ''
+    islamic : ''
   }
   const [state, setstate] = useState(initialState);
 
   useEffect( ()=>{
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition( (location)=>{
-        axios.get(`http://api.aladhan.com/v1/timings/${location.timestamp}?latitude=${location.coords.latitude}&longitude=${location.coords.longitude}&method=1`)
+        // console.log(location);
+        let d = new Date();
+        let date = d.getDay()+1;
+        let month = d.getMonth()+1;
+        let year = d.getFullYear();
+        axios.get(`http://api.aladhan.com/v1/calendar?latitude=${location.coords.latitude}&longitude=${location.coords.longitude}&method=2&month=${month}&year=${year}`)
         .then( res=>{
-            console.log(res.data);
-            let {data} = res.data
+            let namazTime = res.data.data[date];
+            console.log(namazTime);
             setstate({
-              meta : data.meta,
-              time : data.timings,
-              date : data.date,
-              currentDate : new Date,
+              meta : namazTime.meta,
+              time : namazTime.timings,
+              date : namazTime.date,
             });
-            
         })
         .catch( err=>{
             console.log(err);
         });
+        
       })
     }
-
+    
   },[]);
 
   return (
     <div className='background'>
-      {
-        console.log(state.currentDate)
-      }
       <PrayersList meta={state.meta} time={state.time} date={state.date} />
     </div>
   );
