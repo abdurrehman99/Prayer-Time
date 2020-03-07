@@ -16,7 +16,7 @@ const PrayersList = (props) => {
         let date = d.getDay()+1;
         let month = d.getMonth()+1;
         let year = d.getFullYear();
-        axios.get(`http://api.aladhan.com/v1/gToH?date=${date}-${month}-${year}`)
+        axios.get(`https://api.aladhan.com/v1/gToH?date=${date}-${month}-${year}`)
         .then( res=>{
             // console.log(res.data.data);
             setstate({

@@ -21,7 +21,7 @@ function App() {
         let date = d.getDay()+1;
         let month = d.getMonth()+1;
         let year = d.getFullYear();
-        axios.get(`http://api.aladhan.com/v1/calendar?latitude=${location.coords.latitude}&longitude=${location.coords.longitude}&method=2&month=${month}&year=${year}`)
+        axios.get(`https://api.aladhan.com/v1/calendar?latitude=${location.coords.latitude}&longitude=${location.coords.longitude}&method=2&month=${month}&year=${year}`)
         .then( res=>{
             let namazTime = res.data.data[date];
             console.log(namazTime);
